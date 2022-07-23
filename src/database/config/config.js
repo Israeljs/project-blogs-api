@@ -3,19 +3,19 @@ require('dotenv').config();
 module.exports = {
   development: {
     host: process.env.HOSTNAME,
-    port: process.env.MYSQL_PORT,
-    database: process.env.MYSQL_DB_NAME,
-    username: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    dialect: process.env.MYSQL_DIALECT,
+    port: process.env.DB_PORT,
+    database: process.env.DB_NAME,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    dialect: process.env.DB_DIALECT,
   },
   production: {
     host: process.env.HOSTNAME,
-    port: process.env.MYSQL_PORT,
-    database: process.env.MYSQL_DB_NAME,
-    username: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    dialect: process.env.MYSQL_DIALECT,
+    port: process.env.DB_PORT,
+    database: process.env.DB_DB_NAME,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    dialect: process.env.DB_DIALECT,
     dialectOptions: {
       ssl: {
         require: true,
