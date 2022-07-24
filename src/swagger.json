@@ -15,9 +15,11 @@
   ],
   "paths": {
     "/user": {
-      "summary": "Cadastro de usuário",
-      "description": "Essa rota cadastra um novo usuário por email",
-      "tags": ["User"],
+      "post": {
+        "summary": "Cadastro de usuário",
+        "description": "Essa rota cadastra um novo usuário por email",
+        "tags": ["User"]
+      },
       "requestBody": {
         "content": {
           "application/json": {
