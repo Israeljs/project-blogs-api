@@ -20,7 +20,8 @@
   },
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
+    "heroku": "node src/server.js",
+    "start": "npm run heroku",
     "drop": "npx sequelize-cli db:drop",
     "seed": "npx sequelize-cli db:seed:all",
     "debug": "nodemon .",
