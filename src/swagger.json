@@ -18,16 +18,43 @@
       "post": {
         "summary": "Cadastro de usuário",
         "description": "Essa rota cadastra um novo usuário por email",
-        "tags": ["User"]
-      },
-      "requestBody": {
-        "content": {
-          "application/json": {
-            "schema":{
-              "$ref": "#/components/schemas/User"
+        "tags": ["User"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema":{
+                "$ref": "#/components/schemas/User"
+              },
+              "exemplo": {
+                "user": {
+                  "value": {
+                    "displayName": "Brett Wiltshire",
+                    "email": "brett@email.com",
+                    "password": "123456",
+                    "image": "http://4.bp.blogspot.com/_YA50adQ-7vQ/S1gfR_6ufpI/AAAAAAAAAAk/1ErJGgRWZDg/S45/brett.png"
+                  }
+                }
+              }
             }
           }
-        }
+        },
+        "responses": {
+          "400":{
+            "description": "\"displayName\" length must be at least 8 characters long"
+          },
+          "400":{
+            "description": "\"email\" must be a valid email"
+          },
+          "400":{
+            "description": "\"password\" length must be at least 6 characters long"
+          },
+          "409":{
+            "description": "User already registered"
+          },
+          "201":{
+            "description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo1LCJkaXNwbGF5TmFtZSI6InVzdWFyaW8gZGUgdGVzdGUiLCJlbWFpbCI6InRlc3RlQGVtYWlsLmNvbSIsImltYWdlIjoibnVsbCJ9LCJpYXQiOjE2MjAyNDQxODcsImV4cCI6MTYyMDY3NjE4N30.Roc4byj6mYakYqd9LTCozU1hd9k_Vw5IWKGL4hcCVG8"
+          }                                        
+        }      
       }
     }
   },
@@ -36,12 +63,18 @@
       "User": {
         "type": "object",
         "properties": {
+          "displayName": {
+            "type": "string"
+          },
           "email": {
             "type": "string"
           },
           "password": {
             "type": "string"
-          }       
+          },
+          "image": {
+            "type": "string"
+          }                     
         }
       }
     }
