@@ -1,0 +1,11 @@
+{
+  "openapi": "3.0.0",
+  "info":{
+    "title": "API de blog",
+    "description": "Essa API é um trabalho académico e tem como objetivo a produção de conteúdo para um blog",
+    "contact": {
+      "email": "silvaij16@gmail.com"
+    },
+    "version": "1.0.0"
+  }
+}
