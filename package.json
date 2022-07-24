@@ -20,8 +20,7 @@
   },
   "main": "src/server.js",
   "scripts": {
-    "prestart": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
-    "heroku": "node server.js",
+    "heroku": "node src/server.js",
     "start": "npm run heroku.",
     "start:test": "API_PORT=3030 NODE_ENV=test npm start",
     "drop": "npx sequelize-cli db:drop",
