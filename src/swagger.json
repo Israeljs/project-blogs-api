@@ -7,5 +7,41 @@
       "email": "silvaij16@gmail.com"
     },
     "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://project-blogs-back.herokuapp.com/"
+    }
+  ],
+  "paths": {
+    "/user": {
+      "summary": "Cadastro de usuário",
+      "description": "Essa rota cadastra um novo usuário por email",
+      "tags": ["User"],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema":{
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }       
+        }
+      }
+    }
   }
 }
