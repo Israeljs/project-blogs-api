@@ -15,7 +15,7 @@ module.exports = {
     database: process.env.DB_DB_NAME,
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    dialect: process.env.DB_DIALECT,
+    dialect: 'postgres',
     dialectOptions: {
       ssl: {
         require: true,
