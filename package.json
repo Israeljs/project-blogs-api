@@ -20,8 +20,7 @@
   },
   "main": "src/server.js",
   "scripts": {
-    "heroku": "node src/server.js",
-    "start": "npm run heroku.",
+    "start": "node src/server.js",
     "start:test": "API_PORT=3030 NODE_ENV=test npm start",
     "drop": "npx sequelize-cli db:drop",
     "seed": "npx sequelize-cli db:seed:all",
