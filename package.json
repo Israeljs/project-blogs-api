@@ -21,10 +21,8 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "start:test": "API_PORT=3030 NODE_ENV=test npm start",
     "drop": "npx sequelize-cli db:drop",
     "seed": "npx sequelize-cli db:seed:all",
-    "test": "npx -y wait-on -t 300000 http://localhost:3030 && NODE_ENV=test jest -i --verbose --forceExit",
     "debug": "nodemon .",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json ."
   },
