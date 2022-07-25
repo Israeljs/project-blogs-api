@@ -17,7 +17,7 @@
     "/user": {
       "post": {
         "summary": "Cadastro de usuário",
-        "description": "Essa rota cadastra um novo usuário por email",
+        "description": "Essa rota cadastra um novo usuário por email único",
         "tags": ["User"],
         "requestBody": {
           "content": {
@@ -55,6 +55,24 @@
             "description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo1LCJkaXNwbGF5TmFtZSI6InVzdWFyaW8gZGUgdGVzdGUiLCJlbWFpbCI6InRlc3RlQGVtYWlsLmNvbSIsImltYWdlIjoibnVsbCJ9LCJpYXQiOjE2MjAyNDQxODcsImV4cCI6MTYyMDY3NjE4N30.Roc4byj6mYakYqd9LTCozU1hd9k_Vw5IWKGL4hcCVG8"
           }                                        
         }      
+      },
+      "get":{
+        "summary": "Mostra todos os usuários",
+        "description": "Essa rota tem como response uma lista de usuários",
+        "tags": ["User"],
+        "responses": {
+          "200":{
+            "description": "OK",
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }                                      
+        }        
       }
     }
   },
