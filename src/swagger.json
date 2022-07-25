@@ -25,7 +25,7 @@
               "schema":{
                 "$ref": "#/components/schemas/User"
               },
-              "exemplo": {
+              "examples": {
                 "user": {
                   "value": {
                     "displayName": "Brett Wiltshire",
