@@ -60,7 +60,7 @@
         "summary": "Retorna todos os usuários",
         "description": "Essa rota tem como response uma lista de usuários",
         "tags": ["User"],
-        "security": [{ "bearerAuth": [] }],
+        "security": [{ "Authorization": "token" }],
         "responses": {
           "200":{
             "description": "OK",
@@ -100,9 +100,9 @@
       }
     },
     "securitySchemes": {
-      "bearerAuth": {
+      "Authorization": {
         "type": "http",
-        "scheme": "bearer",
+        "scheme": "token",
         "bearerFormat": "JWT"
       }
     }
