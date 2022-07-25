@@ -57,19 +57,21 @@
         }      
       },
       "get":{
-        "summary": "Mostra todos os usuários",
+        "summary": "Retorna todos os usuários",
         "description": "Essa rota tem como response uma lista de usuários",
         "tags": ["User"],
         "responses": {
           "200":{
             "description": "OK",
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/User"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
                 }
-              }
+              }            
             }
           }                                      
         }        
