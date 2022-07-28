@@ -25,11 +25,9 @@ Para configurar o ambiente de desenvolvimento de forma apropriada, siga as instr
 
 #### Pré requisitos
 
-- npm (6.x)
-- Node.js (12.x)
-- PostrgreSQL (12.x)
-- Visual Studio Code (1.44.x)
-- Git (2.x)
+- npm (8.x)
+- Node.js (16.x)
+- mySQL
 
 #### Clonando o projeto com o Git
 
@@ -40,9 +38,10 @@ git clone git@github.com:Israeljs/project-blogs-back.git
 cd project-blogs-back
 ```
 
-#### Instalando as dependências do projeto com npm
+Execute os comandos abaixo na raiz do projeto para instalar essas dependências globalmente e em seguida as dependências do projeto.
 
 ```shell
+npm install -g sequelize-cli eslint
 npm install
 ```
 
