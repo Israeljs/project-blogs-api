@@ -1,4 +1,4 @@
-# Projeto Blogs-back v1.0.0
+# Projeto Blogs-API v1.0.0
 
 Esse projeto acadêmico é uma API e um banco de dados para a produção de conteúdo para um blog!.
 
@@ -17,7 +17,7 @@ Esse projeto acadêmico é uma API e um banco de dados para a produção de cont
 
 #### Documentação da API com Swagger
 
-A documentação da API em desenvolvimento do Projeto Blogs-Back está publicado no [Heroku](https://project-blogs-back.herokuapp.com/api-docs/).
+A documentação da API em desenvolvimento do Projeto Blogs-API está publicado no [Heroku](https://project-blogs-back.herokuapp.com/api-docs/).
 
 ---
 
