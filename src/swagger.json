@@ -42,10 +42,10 @@
           "400":{
             "description": "\"displayName\" length must be at least 8 characters long"
           },
-          "400":{
+          "quatrocentos":{
             "description": "\"email\" must be a valid email"
           },
-          "400":{
+          "quatrocento":{
             "description": "\"password\" length must be at least 6 characters long"
           },
           "409":{
@@ -57,10 +57,10 @@
         }      
       },
       "get":{
+        "security": [{ "bearerAuth": [] }],
         "summary": "Retorna todos os usuários",
         "description": "Essa rota tem como response uma lista de usuários",
         "tags": ["User"],
-        "security": [{ "Authorization": "token" }],
         "responses": {
           "200":{
             "description": "OK",
@@ -69,13 +69,223 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/User"
+                    "$ref": "#/components/schemas/UserGet"
                   }
                 }
               }            
             }
           }                                      
         }        
+      }
+    },
+    "/user/{id}": {
+      "get":{
+        "summary": "Retorna um usuário pelo id",
+        "description": "Essa rota tem como response um único usuário",
+        "tags": ["User"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id do usuário pesquisado",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200":{
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/UserGet"
+                }
+              }            
+            }
+          },
+          "404": {
+            "description": "User does not exist"
+          }                                      
+        }          
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login de usuário",
+        "description": "Essa rota faz o login de um usuário",
+        "tags": ["Login"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema":{
+                "$ref": "#/components/schemas/UserLogin"
+              },
+              "examples": {
+                "login": {
+                  "value": {
+                    "email": "brett@email.com",
+                    "password": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400":{
+            "description": "Some required fields are missing"
+          },
+          "quatrocentos":{
+            "description": "Invalid fields"
+          },
+          "200":{
+            "description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo1LCJkaXNwbGF5TmFtZSI6InVzdWFyaW8gZGUgdGVzdGUiLCJlbWFpbCI6InRlc3RlQGVtYWlsLmNvbSIsImltYWdlIjoibnVsbCJ9LCJpYXQiOjE2MjAyNDQxODcsImV4cCI6MTYyMDY3NjE4N30.Roc4byj6mYakYqd9LTCozU1hd9k_Vw5IWKGL4hcCVG8"
+          }                                        
+        }          
+      }
+    },
+    "/categories": {
+      "post": {
+        "summary": "Cadastra uma categoria",
+        "description": "Essa rota cadastra uma nova categoria",
+        "tags": ["Categories"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema":{
+                "type":"object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              },
+              "examples": {
+                "category": {
+                  "value": {
+                    "name": "Typescript"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "bearerAuth": [] }],        
+        "responses": {
+          "400":{
+            "description": "\"name\" is required"
+          },
+          "201":{
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }            
+            }
+          }                                      
+        }      
+      },
+      "get": {
+        "summary": "Retorna todos as categorias",
+        "description": "Essa rota tem como response uma lista de categorias",
+        "tags": ["Categories"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200":{
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }            
+            }
+          }                                      
+        }       
+      }
+    },
+    "/post": {
+      "post": {
+        "summary": "Cadastra uma postagem",
+        "description": "Essa rota cadastra uma nova postagem",
+        "tags": ["Post"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema":{
+                "type":"object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "content": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "categoryIds": {
+                    "type": "string",
+                    "required": true
+                  }                                   
+                }
+              },
+              "examples": {
+                "category": {
+                  "value": {
+                    "name": "Typescript"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "bearerAuth": [] }],        
+        "responses": {
+          "400":{
+            "description": "\"name\" is required"
+          },
+          "201":{
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }            
+            }
+          }                                      
+        }          
       }
     }
   },
@@ -85,24 +295,62 @@
         "type": "object",
         "properties": {
           "displayName": {
-            "type": "string"
+            "type": "string",
+            "required": true
           },
           "email": {
-            "type": "string"
+            "type": "string",
+            "required": true
           },
           "password": {
-            "type": "string"
+            "type": "string",
+            "required": true
           },
           "image": {
-            "type": "string"
+            "type": "string",
+            "required": true
           }                     
         }
-      }
+      },
+      "UserGet": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "required": true
+          },          
+          "displayName": {
+            "type": "string",
+            "required": true
+          },
+          "email": {
+            "type": "string",
+            "required": true
+          },
+          "image": {
+            "type": "string",
+            "required": true
+          }                     
+        }
+      },
+      "UserLogin": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "required": true
+          },
+          "password": {
+            "type": "string",
+            "required": true
+          }               
+        }
+      }      
     },
     "securitySchemes": {
-      "Authorization": {
+      "bearerAuth": {
         "type": "http",
-        "scheme": "token",
+        "scheme": "bearer",
         "bearerFormat": "JWT"
       }
     }
